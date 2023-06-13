@@ -1,0 +1,113 @@
+//share 共用的css
+// @import "base/mixin";
+
+
+.date-tag{
+    margin:24px 0 16px;
+    display: flex;  
+    align-items: center;
+    >span{
+        font-family: $fen;
+    }
+    .mtag{
+        min-width: 4em;
+        background-color: $color2;
+        text-align: center;
+        line-height: 1.5em;
+        padding: 4px 18px 4px;
+        color:white;
+        @include font-size(pxToEm(15),pxToEm(18));
+        margin-left: 1em;
+        @include border(5px);
+    }
+    
+    @include mediaquery(null,$md){   
+        margin:20px 0 12px;
+        .mtag{
+            padding: 5px 17px 4px;            
+        }     
+    }
+}
+
+.news-list{
+    a{          
+        color:white;
+        display: block;
+        
+    }
+    .mimg{
+        border:5px solid $color4;
+        @include border(10px);
+        aspect-ratio: 1/0.65;
+        overflow: hidden;
+        position: relative;
+    }
+    .mimg:after{
+        content: "";
+        width: 100%;
+        height: 100%;
+        @include position(absolute,$top:0,$left:0);
+        background: no-repeat url(../images/default.jpg) center / cover;
+        z-index: 2;
+        transition: transform 0.6s;
+    }
+    .mimg img{
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.6s;
+        position: relative;
+        z-index: 5;
+    }
+    h6{
+        font-weight: 500;
+        @include font-size(pxToEm(18),pxToEm(20)); 
+        transition: color 0.6s;
+    }
+    @include mediaquery(null,$md){
+        margin-bottom: 30vw;
+        li{
+            margin-bottom: 60px;
+        }
+    }
+    @include mediaquery($md,null){
+        margin-bottom: 250px;
+        li{
+            display: flex; 
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+        a:hover{
+            .mimg img,.mimg:after{
+                transform: scale(1.1);
+            }
+            h6{
+                color:$color1;
+            }
+        }
+    }
+    @include mediaquery($md,$lg){
+        li{
+            flex:0 0 calc((100% - 40px) / 2);
+        }
+        li:not(:nth-child(2n)){
+            margin-right: 40px;
+        }
+    }
+    @include mediaquery($lg,$xl){
+        li{
+            flex:0 0 calc((100% - 80px) / 3);
+        }
+        li:not(:nth-child(3n)){
+            margin-right: 40px;
+        }
+    }
+    @include mediaquery($xl,null){
+        margin-bottom: 150px;
+        li{
+            flex:0 0 calc((100% - 120px) / 4);
+        }
+        li:not(:nth-child(4n)){
+            margin-right: 40px;
+        }
+    }
+}

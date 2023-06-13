@@ -1,0 +1,130 @@
+@import "base/mixin";
+@import "template/pagekv";
+@import "template/topmenu";
+@import "template/editor_inner";
+
+.style1{
+    .titleB{
+        margin: 1.2em 0 1.2em;
+    }
+    .top-menu-ul li.active a {
+        color: $color2;
+        border-color: $color2;
+        border-bottom-color: rgba($color2,0);
+    }
+    @include mediaquery(null,$md){
+        .imgbx{
+            height: calc(100vh - 200px);
+            overflow: auto;
+        }
+        .imgbx img{                
+            height: 100%;
+            max-width: initial;
+        }
+    }
+    @include mediaquery($md,null){
+        .titleB{
+            margin: 2em 0 1em;
+        }
+        #topmenu1{
+            margin-bottom: 5em;
+        }
+    }
+}
+
+.envir{
+    #topmenu1{
+        margin-bottom: 2em;
+    }
+    @include mediaquery($md,null){
+        #topmenu1{
+            margin-bottom: 5em;
+        }
+    }
+}
+
+.recruit{
+    .langbtngroup{
+        display: none;
+    }
+    .tag-menu{
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        li{
+            flex:0 0 30%;
+            width: 30%;
+        }  
+        h4{
+            font-size: pxToRem(24);
+            @include font-color($color3,500,1.5);
+            border-bottom: 1px solid #d8d8d8;
+            padding:20px 16px 20px 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.6s;
+        }
+        h4:before,.select-wrap:before{
+            content: "";
+            display: inline-block;
+            @include border();
+            background:$color1;
+            margin-right: 0.5em;
+            width: 5px;
+            height: 5px;
+            transition: all 0.6s;
+        }
+        .select-wrap:before{
+            @include position(absolute,$top:50%,$left:$pdr-mo);
+            z-index: 2;
+        }
+        .select-wrap:after{
+            content: "";
+            background:no-repeat url(../images/select_arrow.png) center / contain;
+            width: 1em;
+            height: 1em;
+            @include position(absolute,$top:50%,$right:$pdr-mo);
+            z-index: 2;
+        }
+        //select
+        select{
+            position: relative;
+            width: 100%;
+            border:none;
+            background: transparent;
+            appearance: none;
+            outline: none;
+            border-bottom: 1px solid #d8d8d8;
+            font-size: pxToRem(20);
+            padding:16px 0 16px $pdr-mo;
+            color:$color3;
+        }  
+    }   
+    @include mediaquery (null,$lg){
+        .tag-menu ul{
+            display: none;
+        }
+    } 
+    @include mediaquery($lg,null){
+        .tag-menu .select-wrap{
+            display: none;
+        }
+        .tag-menu li:hover{
+            h4{
+                color:$color1;
+                border-bottom-color: $color1;
+            }
+            h4:before{
+                background-color: $color3;
+            }
+        }
+    }
+    @include mediaquery($xl,null){   
+        .tag-menu li{
+            flex:0 0 23%;
+            width: 23%;
+        }  
+    }
+}

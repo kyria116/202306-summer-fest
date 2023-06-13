@@ -1,0 +1,187 @@
+@import "base/mixin";
+@import "plugin/slick";
+@import "plugin/slick-theme";
+
+//overwrite
+.slick-dotted.slick-slider{
+    margin-bottom: 0;
+}
+//輪播圖
+.banner{
+    //轉場動畫
+    .slick-slide .bgcover{
+        opacity: 0;
+        transform: scale(1.5);
+        transition:opacity 0.6s 1s, transform 1s cubic-bezier(.215, .61, .355, 1) 1s;
+    }
+    .slickinit .slick-slide.slick-active .bgcover{
+        transform: scale(1);
+        opacity: 1;
+        transition:opacity 0.6s, transform 5s cubic-bezier(.215, .61, .355, 1);
+    }    
+    //動畫
+    &.animated{
+        .slick-btn,.backdrop,.scrdwn{
+            opacity: 1;
+            transition: opacity 0.8s;
+        }
+        h4{
+            opacity: 1;
+            transform: translateY(0px);
+            transition: opacity 1s 0.4s,transform 0.8s 0.4s;
+            transition-timing-function: cubic-bezier(.38, .005, .215, 1);
+        }
+        h4 + div{
+            opacity: 1;
+            transform: translateY(0px);
+            transition: opacity 1s 1s,transform 0.8s 1s;
+            transition-timing-function: cubic-bezier(.38, .005, .215, 1);
+        }
+    }
+    .custom_paging{      
+        li{
+            margin:0 1em;
+            position: relative;
+            height: 28px;
+            cursor: pointer;
+        }
+        svg{
+            width: 28px;
+            height: 28px;
+            stroke: white;
+            stroke-width: 2px;
+            fill:none;
+            stroke-dasharray:200 201;
+            stroke-dashoffset:200;
+        }
+        i{
+            width: 12px;
+            height: 12px;
+            border:1px solid white;
+            background-color: rgba(white,0);
+            @include border();
+            display: block;
+            @include position(absolute,$top:50%,$left:50%);
+            transform: translate(-50%,-50%);
+        }
+        li:hover i{
+            background-color: white;
+        }
+        
+        li.slick-active{
+            i{
+                background-color: white;
+            }
+            svg{            
+                animation:yoOVDSqT_draw 9s 0.5s linear forwards;
+            }
+        }
+    }
+    .slogn{
+        color: white;
+        z-index: 10;
+        @include position(absolute,$top:46%,$left:11.5%);
+        transform: translateY(-50%);
+        text-shadow: 0.1em 0.1em 0.3em #333;
+        text-shadow: 0.1em 0.1em 0.5em rgba(#333,0.5), 0.1em 0.1em 0.8em rgba(#333,0.2);
+        max-width: 60em;
+        width: 80%;
+    }     
+    .bgred{
+        background-color: $color1;
+        height: 91.8%;   
+        width: 20%;
+        z-index: -1;
+        @include position(absolute,$top:0,$left:0%);
+    }
+    h4{
+        @include font-size(pxToEm(27),pxToEm(68));
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(2.22222em);
+        line-height: 1;
+    }
+    h4 + div{        
+        @include font-size(pxToEm(15),pxToEm(20));
+        font-weight: 500;
+        margin-top: 0.8em;
+        display: block;
+        opacity: 0;
+        transform: translateY(2.22222em);
+    }
+    .scrdwn{
+        text-align: center;
+        color: white;
+        @include position(absolute,$left:50%,$bottom:1em);
+        @include font-size(pxToEm(13),pxToEm(16));
+        text-shadow: 0.1em 0.1em 0.3em #333;
+        z-index: 10;
+        img{
+            width: 2.5em;
+            margin-top: 0.5em;
+        }
+    }
+    @include mediaquery(null,$md){
+        .bgcover.pc_use{
+            display: none;
+        }
+        .bgcover.mo_use{
+            padding-bottom: 108.2%;
+        }     
+        .slick-banner{
+            width: 80%;
+            margin-left: 20%;
+        }
+        .slogn{
+            left:25px;
+            top:55%;
+        }
+        .custom_paging {            
+            @include position(absolute,$bottom:-5%,$right:0); 
+            transform: scale(0.7);
+            transform-origin: top;
+        }
+        .custom_paging li{
+            display: block;
+            margin:0.5em 1em;
+        } 
+    }
+    @include mediaquery($md,null){
+        .bgcover.mo_use{
+            display: none;
+        }
+        .bgcover.pc_use{
+            padding-bottom: 53.4%;
+            min-height: 500px;
+        }     
+        .slick-banner{
+            width: 80%;
+            margin-left: 20%;
+        }
+        .custom_paging {            
+            @include position(absolute,$bottom:10%,$left:$pdr-pc); 
+            max-width: 20%;
+        }
+        .custom_paging li{
+            display: inline-block;
+        }
+        h4 + div{
+            margin-top: 1.8em;
+        }
+    }
+    @include mediaquery($xl,null){
+        h4{
+            font-size: 4vw;
+        }
+        h4 + div{
+            font-size: 1.25vw;
+        }
+        .custom_paging {     
+            left:60px;
+        }
+    }
+}
+
+@keyframes yoOVDSqT_draw{
+    100%{stroke-dashoffset:0;}
+}

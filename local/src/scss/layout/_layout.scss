@@ -1,0 +1,277 @@
+// header footer使用(每個案子都用到的東西)
+@import "../base/mixin";
+
+body{    
+  position: relative;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  visibility: hidden;
+  opacity: 0;
+  font-family: $mfont;
+  letter-spacing: 0.05em;
+  color:#fefefe;
+  background: repeat url(../images/news_texture.png);
+  &::before{
+    content:"";
+    width: 100%;
+    height: 100%;
+    background: no-repeat url(../images/01_pink_dot.png) center top / cover;
+    @include position(absolute,$top:0,$left:0);
+  }
+  &.fade-in{
+      opacity: 1;
+      transition:opacity  2s ease ;
+      visibility: visible;
+  } 
+}
+
+/*----------------------通用設定------------------------*/
+//selection
+p,h1,h2,h3,h4,b,strong,span,li,div,a,img{
+  
+}
+::selection{
+  color:#fff;
+  background:$color2;
+}
+//a tag
+a{outline: none;}
+a,a:hover {
+  text-decoration: none;
+  transition: 0.6s;
+}
+*:focus {
+    outline: none;
+}
+img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+//語系
+.lang_tw{
+  .en{    
+    display: none !important;
+  }
+  .jp{    
+    display: none !important;
+  }
+}
+.lang_en{
+  .tw{    
+    display: none !important;
+  }
+  .jp{    
+    display: none !important;
+  }
+}
+.lang_jp{
+  .tw{    
+    display: none !important;
+  }
+  .en{    
+    display: none !important;
+  }
+}
+
+#Wapper{
+  position: relative;
+  overflow: hidden;
+  background: no-repeat url(../images/building.png) center bottom / 100vw;
+  .light_on{
+    @include position(absolute,$left:0,$bottom:0%);
+    animation: lightOn 1.5s ease-in-out infinite alternate;
+  }
+  @include mediaquery(null,$md){
+    
+  }
+}
+.row{
+  position: relative; 
+  @include mediaquery(null,$md){
+      padding-left:$pdr-mo;
+      padding-right: $pdr-mo;
+  }
+  @include mediaquery($md,null){        
+      margin:0 auto;
+      padding-left:$pdr-pc;
+      padding-right: $pdr-pc;
+      &:not(.col){
+          display: flex;
+          flex-wrap: wrap;
+      }
+  }
+  @include mediaquery($sm,$lg){
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include mediaquery($lg,null){      
+      max-width: $maxConentW;  
+      width: 90%;
+  }
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+
+//內容框 col-11
+// .col-11{
+//   @include mediaquery($sm,null){
+//     max-width: 1170px;
+//     width:92%;
+//     margin:0 auto;
+//   }
+// }
+// .col-10{
+//   @include mediaquery($sm,null){
+//     max-width: 1000px;
+//     width:92%;
+//     margin:0 auto;
+//   }
+// }
+.imgPng{  
+  image-rendering: -moz-crisp-edges;  
+  image-rendering: -o-crisp-edges;     
+  image-rendering: -webkit-optimize-contrast; 
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; 
+}
+
+/*----------------------共用樣式------------------------*/
+.text-center{text-align: center;}
+.text-right{text-align:right;}
+.text-justify{text-align: justify;}
+.mpsrel{position: relative;}
+.bgcover{
+  width:100%;
+  height:0;
+  background: center / cover;
+}
+
+/*-------------------背景圖片 桌手機分開-----------------*/
+@include mediaquery(null,$sm){
+  .bgcover[data-src-lg]{
+    content: attr(data-src-lg, url);
+  }
+}
+@include mediaquery($sm,null){
+  .bgcover[data-src-sm]{
+    content: attr(data-src-sm, url);
+  }
+}
+#topBtn{
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+  display: block;
+  @include position(fixed,$bottom:0px);
+  width: 115px;
+  height: 40px;
+  &::before{
+    content: "";
+    width: 50px;
+    height: 20px;
+    background:no-repeat url(../images/gotop_hover.png) center top / contain;
+    @include position(absolute,$top:-25%,$left:50%);
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+  //位置轉換
+  &.open{
+    opacity: 1;
+    visibility: visible;
+    z-index:99;
+  }
+  &.change{
+    position: absolute;
+  }
+  @include mediaquery(null,$sm){
+    right: 12px;
+    bottom: 30px;
+  }
+  @include mediaquery($sm,null){
+    right: 30px;
+    bottom: 40px;
+    &:hover{
+      &::before{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+//顏色
+.fwh{
+  color:white;
+}
+.fdgray{
+  color:#454545;
+}
+.flgrah{
+  color:#999999;
+}
+//內文
+.txt-lh2{
+  line-height: 2;
+}
+
+//標題
+.titleA{
+  font-family: $fontfix;
+  @include font-size(pxToRem(30),pxToRem(48)); 
+  font-weight: 500;  
+  color: white;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 80px;
+  span{
+    position: relative;
+  }
+  span::before{
+    content:"";
+    width: 1.6em;
+    height: 1.6em;
+    @include position(absolute,$left:-1em,$top:-1em);
+    background: no-repeat url(../images/title_sparkle.png) center / contain;
+    animation: lightOn 0.5s ease-in-out infinite alternate;
+    opacity: 0;
+  }
+  @include mediaquery(null,$md){
+    margin-bottom: 1.25em;
+  }
+}
+.triger{
+  width: 100%;
+  height: 1px;
+  transform: translateY(-100px);
+  @include mediaquery($lg,null){
+    transform: translateY(-120px);
+  }
+}
+
+@keyframes lightOn {
+  from {opacity: 0;}
+  to {opacity: 1}
+}
+@keyframes lightOn2 {
+  0% {opacity: 0;}
+  33% {opacity: 0;}
+  67% {opacity: 1;}
+  to {opacity: 0}
+}
+@keyframes lightOn3 {
+  0% {opacity: 0;}
+  67% {opacity: 0;}
+  to {opacity: 1}
+}

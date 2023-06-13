@@ -1,0 +1,264 @@
+@import "base/mixin";
+@import "template/pagekv";
+@import "template/form";
+
+.contact{
+    .titleB{
+        margin-bottom: 1.5em;
+    }
+    
+    .store{
+        .fs24{
+            @include font-size(pxToRem(22),pxToRem(24));
+            font-weight: 700;
+            color:$color0;
+            margin-top: 0.5em;
+            margin-bottom: 1.5em;
+        }
+        .f-info{
+            > div{
+                display: flex;
+                margin-bottom: 1em;
+            }
+            a{
+                color: $color3;
+            }
+            b{
+                flex: 0 0 3em;
+                max-width: 3em;
+            }
+            b img{
+                height: 1.25em;
+            }
+            ul li{
+                display: flex;
+                margin-bottom: 0.5em;
+            }
+            ul i{
+                flex: 0 0 5.5em;
+                max-width: 5.5em;
+                text-align-last:justify ;   
+                text-align: justify;
+                padding-right: 0.7em;
+                position: relative;
+                margin-right: 0.8em;
+            }
+            // ul i:after {
+            //     content: '';
+            //     width: 100%;
+            //     display: inline-block;
+            // }
+            ul i:before{
+                content:":";
+                @include position(absolute,$top:-0.1em,$right:0);
+            }
+        }
+    }    
+    .formtable{
+        .form-des{
+            margin-bottom: 3em;
+            margin-top: 6em;
+        }       
+        .row{
+            justify-content: space-between;
+        }
+        .check_radi{
+            padding-left: 2em;
+            margin-bottom: 1em;
+        }
+        .file-upload{
+            position: relative;
+            margin-bottom: 20px;
+            .controls {
+                display: none;
+            }
+            .flex{
+                display: flex;
+                align-items: center;
+            }
+            .mpath{
+                position: relative;
+                b{
+                    display: inline-block;
+                    color:#999999;
+                    padding-left: 1.5em;
+                    padding-right: 2em;
+                    background:no-repeat url(../images/contact/icon_attachment.png) left center / 0.8em;                
+                    word-break: break-word;
+                }
+            }
+        }
+        .file-btn{
+            display: inline-block;
+            text-align: center;
+            width: 210px;
+            height: 50px;
+            line-height: 50px;
+            color:white;
+            background-color: $color0;
+            font-size: pxToRem(18);
+            img{
+                width: 1.4em;
+                margin-left: 0.5em;
+                vertical-align: -0.2em;
+            }
+            &.disabled{
+                background-color: #b6b6b6;
+                position: relative;
+                z-index:-1;
+            }
+        }
+        .delbtn{
+            width: 1.2em;
+            height: 1.2em;
+            display: none;
+            @include position(absolute,$right:0,$top:50%);
+            transform: translateY(-50%);
+            @include border();
+            i:before,i:after{
+                transition: all .25s;
+                content: "";
+                @include position(absolute,$left:0.2em,$top:0.6em);
+                height: 1.5px;   
+                width: 1.1em;   
+                background-color: #333333;
+            }
+            i:before{
+                transform:rotate(45deg);                  
+            }
+            i:after{
+                transform: rotate(-45deg);
+            }
+        }
+        .note{
+            margin-bottom: 24px;
+        }
+    }
+    @include mediaquery(null,$sm){   
+        .titleB{
+            margin-bottom: 1em;
+        }         
+        .store{
+            .fs24{
+                margin-top: 0em;
+                margin-bottom: 1em;
+            }            
+            .f-info{                
+                > div{
+                    margin-bottom: 1em;
+                }
+            }
+            .mapbx{
+                margin:1em auto 0;
+            }
+        } 
+        .formtable{
+            .form-des{
+                margin-top: 4em;
+            }
+            .file-btn{
+                width: 100%;
+            }
+            .file-btn.disabled + .mpath{
+                display: block;
+            }
+            .file-upload .mpath{
+                margin-top: 1em;
+                display: none;
+            }
+            .file-upload{
+                margin-top: 24px;
+            }
+            .form-group.w30{
+                text-align: center;
+                margin-top: 2em;
+            }
+        }
+        .pc_use{
+            display: none;
+        }
+    }
+    @include mediaquery($sm,$lg){   
+        .store{
+            display: block;
+            .mapbx{
+                margin:3em auto 10em;
+            }
+        }
+        .formtable{
+            .row{    
+                display: block;
+            }
+            .file-btn{
+                margin-right: 36px;
+            }
+            .file-upload{
+                display: flex;
+                align-items: center;
+            }
+            .file-upload .mpath{                
+                max-width: calc(100% - 250px);
+            }
+            .upload-group{
+                padding-bottom: 1em;
+            } 
+        }     
+        .pc_use{
+            display: none;
+        }
+    }
+    @include mediaquery($md,$xxl){
+        .formtable{            
+            .form-group.w30{
+                margin-top: 5em;
+                margin-bottom: 5em;
+                padding-left: 6em;
+                max-width: 100%;
+            }
+            .note{
+                @include position(absolute,$top:100%,$left:0);
+            }
+        }
+    }
+    @include mediaquery($lg,null){  
+
+        .col-6{
+            flex:0 0 50%;
+            max-width: 50%;
+        }
+        .store{            
+            display: flex;
+            .f-info{
+                max-width: 86%;
+            }
+            .mapbx{
+                display: flex;
+                align-items: center;
+            }
+        }        
+        .mo_use{
+            display: none;
+        }       
+        .formtable{
+            .file-btn:not(.disabled):hover{
+                background-color: $color2;
+            }
+            .file-btn{
+                margin-right: 36px;
+            }
+            .file-upload{
+                display: flex;
+                align-items: center;
+            }
+            .file-upload .mpath{     
+                max-width: calc(100% - 250px);
+            }
+            .upload-group{
+                padding-bottom: 1em;
+            } 
+            .note{
+                @include position(absolute,$top:100%,$left:0);
+            }
+        } 
+    }
+}

@@ -1,0 +1,26 @@
+@import "base/mixin";
+@import "layout/newslist";
+@import "template/editor_inner";
+
+body{
+    background-color: #3d2671;
+}
+
+
+.detail{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    h1{
+        @include font-size(pxToEm(24),pxToEm(36));
+        line-height: 1.2;
+        font-weight: 500;
+        border-bottom: 1px solid white;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+        margin-top: 0.7em;
+    }
+    @include mediaquery($md,null){
+        min-height: 60vh;
+        margin-top: 200px;
+    }
+}
