@@ -22,6 +22,10 @@ footer{
             color:$color1;
             margin-right: 2em;
         }
+        > div:nth-child(2) img{
+            max-width: calc(100% - 10em);
+            margin-right: 0.5em;
+        }
     }
     .copyright{
         font-family: $fen;
@@ -42,7 +46,10 @@ footer{
             i{
                 margin:1em 0 0.2em;
                 display: block;
-            }
+            }     
+            > div:nth-child(2) img{
+                max-width: calc(100% - 3em);
+            }       
         }
     }
     @include mediaquery($md,null){

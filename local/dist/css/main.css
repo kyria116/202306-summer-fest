@@ -452,7 +452,7 @@ header {
             transform: rotate(-180deg);
   }
   header li.in-active .subBox {
-    max-height: 180px;
+    max-height: 500px;
   }
 }
 @media all and (min-width: 769px) and (max-width: 990px) {
@@ -517,8 +517,9 @@ header .logo {
   header .logo {
     position: absolute;
     top: 30px;
-    left: 60px;
-    width: 410px;
+    left: 20px;
+    max-width: 410px;
+    width: 26%;
     height: 60px;
   }
 }
@@ -596,6 +597,11 @@ header.menu-expanded .menuicon .bar:after {
   header ul.mmenu {
     text-align: right;
     padding: 22px 180px 22px 120px;
+  }
+}
+@media all and (min-width: 991px) and (max-width: 1199px) {
+  header ul.mmenu {
+    padding-right: 120px;
   }
 }
 header ul.mmenu > li {
@@ -790,6 +796,13 @@ header ul.subBox a {
   }
 }
 
+@media all and (min-width: 991px) {
+  .lang_en header ul.mmenu > li span {
+    padding: 16px 10px;
+    font-size: 15px;
+  }
+}
+
 @media all and (max-width: 990px) {
   .firework_btm {
     display: none;
@@ -817,6 +830,10 @@ footer .logo-wrap i {
   color: #fff100;
   margin-right: 2em;
 }
+footer .logo-wrap > div:nth-child(2) img {
+  max-width: calc(100% - 10em);
+  margin-right: 0.5em;
+}
 footer .copyright {
   font-family: "Rubik", sans-serif;
   white-space: nowrap;
@@ -838,6 +855,9 @@ footer .copyright {
   footer .logo-wrap i {
     margin: 1em 0 0.2em;
     display: block;
+  }
+  footer .logo-wrap > div:nth-child(2) img {
+    max-width: calc(100% - 3em);
   }
 }
 @media all and (min-width: 769px) {

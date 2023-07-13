@@ -31,7 +31,7 @@ header{
                 transform: rotate(-180deg);
             }
             .subBox{
-                max-height: 180px;
+                max-height: 500px;
             }
         }
     }     
@@ -87,11 +87,12 @@ header{
             width: 195px;
             transform: translateY(-53%);
             @include position(absolute,$top:50%);
-        }
+        }        
         @include mediaquery($lg,null){
             @include position(absolute,$top:30px);
-            left:60px;
-            width: 410px;
+            left:20px;
+            max-width: 410px;
+            width: 26%;
             height: 60px;
         }
     }  
@@ -158,6 +159,9 @@ header{
         @include mediaquery($lg,null){
             text-align: right;
             padding: 22px 180px 22px 120px;
+        }
+        @include mediaquery($lg,$xl){
+            padding-right: 120px;
         }
 		> li{
             position: relative;
@@ -308,5 +312,14 @@ header{
     }
     @include mediaquery($xxl,null){
         right:40px;
+    }
+}
+
+.lang_en{
+    @include mediaquery($lg,null){
+        header ul.mmenu > li span{
+            padding:16px 10px;
+            font-size: 15px;
+        }
     }
 }
