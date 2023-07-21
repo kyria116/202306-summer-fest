@@ -97,7 +97,7 @@
 }
 @media all and (max-width: 768px) {
   .news-list {
-    margin-bottom: 30vw;
+    margin-bottom: 23vw;
   }
   .news-list li {
     margin-bottom: 60px;
@@ -105,7 +105,7 @@
 }
 @media all and (min-width: 769px) {
   .news-list {
-    margin-bottom: 250px;
+    margin-bottom: 200px;
   }
   .news-list li {
     display: -webkit-box;
@@ -145,7 +145,7 @@
 }
 @media all and (min-width: 1200px) {
   .news-list {
-    margin-bottom: 150px;
+    margin-bottom: 100px;
   }
   .news-list li {
     -webkit-box-flex: 0;

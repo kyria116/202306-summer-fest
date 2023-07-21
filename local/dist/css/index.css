@@ -97,7 +97,7 @@
 }
 @media all and (max-width: 768px) {
   .news-list {
-    margin-bottom: 30vw;
+    margin-bottom: 23vw;
   }
   .news-list li {
     margin-bottom: 60px;
@@ -105,7 +105,7 @@
 }
 @media all and (min-width: 769px) {
   .news-list {
-    margin-bottom: 250px;
+    margin-bottom: 200px;
   }
   .news-list li {
     display: -webkit-box;
@@ -145,7 +145,7 @@
 }
 @media all and (min-width: 1200px) {
   .news-list {
-    margin-bottom: 150px;
+    margin-bottom: 100px;
   }
   .news-list li {
     -webkit-box-flex: 0;
@@ -231,6 +231,70 @@
   }
 }
 
+.page {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+@media all and (max-width: 575px) {
+  .page {
+    font-size: 1em;
+  }
+}
+@media all and (min-width: 576px) {
+  .page {
+    font-size: 1.25em;
+  }
+}
+.page a {
+  color: #ed7d64;
+  font-weight: 500;
+  line-height: 1.5;
+  display: block;
+  position: relative;
+  border: 1px solid rgba(237, 125, 100, 0);
+  border-radius: 99em;
+  min-width: 40px;
+  line-height: 40px;
+  height: 40px;
+}
+.page .svg {
+  stroke: #ed7d64;
+  -webkit-transition: stroke 0.6s;
+  transition: stroke 0.6s;
+  width: 10px;
+}
+.page .active a {
+  border-color: #fff100;
+}
+@media all and (max-width: 768px) {
+  .page dd {
+    margin: 0 9px;
+  }
+  .page dt {
+    padding-top: 5px;
+  }
+}
+@media all and (min-width: 769px) {
+  .page dd {
+    margin: 0 30px;
+  }
+  .page dt {
+    margin: 0 36px;
+  }
+  .page a:hover {
+    border-color: #fff100;
+  }
+}
+
 .banner {
   aspect-ratio: 1/0.46875;
   position: relative;
@@ -276,6 +340,9 @@
 .news .firework {
   display: none;
 }
+.news .page {
+  margin-bottom: 250px;
+}
 @media all and (max-width: 768px) {
   .news {
     padding-top: 70px;
@@ -288,6 +355,9 @@
   .news .boat img {
     -webkit-animation: rock-boat-mo 3s ease-in-out infinite;
             animation: rock-boat-mo 3s ease-in-out infinite;
+  }
+  .news .page {
+    margin-bottom: 28vw;
   }
 }
 @media all and (min-width: 991px) {

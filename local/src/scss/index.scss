@@ -1,6 +1,7 @@
 @import "base/mixin";
 @import "layout/newslist";
 @import "template/editor_inner";
+@import "template/_pagination";
 
 
 
@@ -42,6 +43,9 @@
     .firework{
         display: none;
     }
+    .page{
+        margin-bottom: 250px;
+    }
     @include mediaquery(null,$md){
         padding-top: 70px;
         .boat{
@@ -50,6 +54,9 @@
             img{
                 animation: rock-boat-mo 3s ease-in-out infinite;
             }
+        }
+        .page{
+            margin-bottom: 28vw;
         }
     }
     @include mediaquery($lg,null){

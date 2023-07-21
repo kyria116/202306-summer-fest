@@ -64,13 +64,13 @@
         transition: color 0.6s;
     }
     @include mediaquery(null,$md){
-        margin-bottom: 30vw;
+        margin-bottom: 23vw;
         li{
             margin-bottom: 60px;
         }
     }
     @include mediaquery($md,null){
-        margin-bottom: 250px;
+        margin-bottom: 200px;
         li{
             display: flex; 
             flex-wrap: wrap;
@@ -102,7 +102,7 @@
         }
     }
     @include mediaquery($xl,null){
-        margin-bottom: 150px;
+        margin-bottom: 100px;
         li{
             flex:0 0 calc((100% - 120px) / 4);
         }
